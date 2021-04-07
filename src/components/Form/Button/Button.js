@@ -2,16 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './button.module.scss';
 
-const Button = onClickHandler => {
+const Button = ({ name }) => {
   return (
-    <button className={styles.button} type="button" onClick={onClickHandler}>
-      Add Contact
+    <button className={styles.button} type="Submit">
+      {name}
     </button>
   );
 };
 
 export default Button;
-
-Button.propTypes = {
-  onClickHandler: PropTypes.func.isRequired,
-};
