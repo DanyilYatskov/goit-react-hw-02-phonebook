@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import Input from './Input';
+//import PropTypes from 'prop-types';
+import Input from './Input/';
+import Button from './Button/';
 import Section from '../Section';
 //import styles from './section.module.scss';
 
