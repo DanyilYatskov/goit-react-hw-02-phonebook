@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-import { alert } from '@pnotify/core';
-import '@pnotify/core/dist/PNotify.css';
-import '@pnotify/core/dist/BrightTheme.css';
-import '@pnotify/confirm/dist/PNotifyConfirm.css';
+// import { alert } from '@pnotify/core';
+// import '@pnotify/core/dist/PNotify.css';
+// import '@pnotify/core/dist/BrightTheme.css';
+// import '@pnotify/confirm/dist/PNotifyConfirm.css';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -50,10 +50,10 @@ class App extends Component {
     );
 
     if (contactExists !== undefined) {
-      alert({
-        title: 'Oops',
-        text: `${newContact.name} is already in contacts`,
-      });
+      // alert({
+      //   title: 'Oops',
+      //   text: `${newContact.name} is already in contacts`,
+      // });
       const notify = () =>
         toast.error(`${newContact.name} is already in contacts`, {
           position: 'top-center',
