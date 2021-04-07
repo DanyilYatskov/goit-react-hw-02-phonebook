@@ -34,4 +34,9 @@ export default Input;
 Input.propTypes = {
   type: PropTypes.string.isRequired,
   inputName: PropTypes.string.isRequired,
+  inputId: PropTypes.string,
+  handleChange: PropTypes.func,
+  value: PropTypes.string,
+  pattern: PropTypes.string,
+  title: PropTypes.string,
 };
