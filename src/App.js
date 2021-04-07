@@ -41,6 +41,11 @@ class App extends Component {
       contacts: [...contacts, contact],
     }));
   };
+  deleteContact = contactId => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
+    }));
+  };
   render() {
     const { contacts, filter } = this.state;
     const filteredContacts = this.getFilteredContacts();
@@ -52,7 +57,10 @@ class App extends Component {
         {contacts.length > 0 ? (
           <Section title="Contacts">
             <Filter value={filter} onChange={this.onChangeFilter} />
-            <ContactsList contacts={filteredContacts} />
+            <ContactsList
+              contacts={filteredContacts}
+              onDeleteContact={this.deleteContact}
+            />
           </Section>
         ) : (
           <Notification message="Contacts are missing" />

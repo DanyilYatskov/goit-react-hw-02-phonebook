@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 //import PropTypes from 'prop-types';
 import Input from './Input/';
 import Button from './Button/';
-import Section from '../Section';
+//import Section from '../Section';
 import styles from './form.module.scss';
 
 class Form extends Component {
@@ -53,7 +53,7 @@ class Form extends Component {
           handleChange={this.handleChange}
         />
 
-        <Button name="Add Contact" />
+        <Button name="Add Contact" type="Submit" />
       </form>
     );
   }

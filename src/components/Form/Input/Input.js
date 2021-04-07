@@ -30,3 +30,8 @@ const Input = ({
 };
 
 export default Input;
+
+Input.propTypes = {
+  type: PropTypes.string.isRequired,
+  inputName: PropTypes.string.isRequired,
+};
