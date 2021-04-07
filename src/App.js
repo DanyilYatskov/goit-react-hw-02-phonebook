@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+
+import { alert } from '@pnotify/core';
+import '@pnotify/core/dist/PNotify.css';
+import '@pnotify/core/dist/BrightTheme.css';
+import '@pnotify/confirm/dist/PNotifyConfirm.css';
+
 import Form from './components/Form';
 import Section from './components/Section/';
 import ContactsList from './components/ContactList/';
@@ -31,14 +37,24 @@ class App extends Component {
     );
   };
   addContact = ({ name, number }) => {
-    const contact = {
+    const newContact = {
       id: uuidv4(),
       name: name,
       number: number,
     };
+    const contactExists = this.state.contacts.find(
+      contact => contact.name === newContact.name,
+    );
 
+    if (contactExists !== undefined) {
+      alert({
+        title: 'Oops',
+        text: `${newContact.name} is already in contacts`,
+      });
+      return;
+    }
     this.setState(({ contacts }) => ({
-      contacts: [...contacts, contact],
+      contacts: [...contacts, newContact],
     }));
   };
   deleteContact = contactId => {
