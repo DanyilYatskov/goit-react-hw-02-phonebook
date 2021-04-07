@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import Form from './components/Form';
 import Section from './components/Section/';
 import ContactsList from './components/ContactList/';
+import Notification from './components/Notification/';
 
 class App extends Component {
   static defaultProps = {
@@ -28,9 +29,13 @@ class App extends Component {
         <Section title="Phonebook">
           <Form onSubmit={this.addContact} />
         </Section>
-        <Section title="Contacts">
-          <ContactsList contacts={contacts} />
-        </Section>
+        {contacts.length > 0 ? (
+          <Section title="Contacts">
+            <ContactsList contacts={contacts} />
+          </Section>
+        ) : (
+          <Notification message="Contacts are missing" />
+        )}
       </div>
     );
   }
