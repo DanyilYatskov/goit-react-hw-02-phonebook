@@ -9,14 +9,18 @@ import styles from './form.module.scss';
 class Form extends Component {
   static defaultProps = {
     name: '',
+    number: '',
   };
 
   state = {
     name: this.props.name,
+    number: this.props.number,
   };
   nameInputId = uuidv4();
+  numberInputId = uuidv4();
   handleChange = event => {
-    this.setState({ name: event.target.value });
+    const { name, value } = event.target;
+    this.setState({ [name.toLowerCase()]: value });
   };
 
   handleSubmit = event => {
@@ -24,18 +28,31 @@ class Form extends Component {
 
     this.props.onSubmit(this.state);
 
-    this.setState({ name: '' });
+    this.setState({ name: '', number: '' });
   };
   render() {
-    const { name } = this.state;
+    const { name, number } = this.state;
     return (
       <form className="TodoEditor" onSubmit={this.handleSubmit}>
         <Input
-          inputName="name"
+          inputName="Name"
+          type="text"
+          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
           value={name}
           inputId={this.nameInputId}
           handleChange={this.handleChange}
         />
+        <Input
+          inputName="Number"
+          type="tel"
+          pattern="(\+?( |-|\.)?\d{1,2}( |-|\.)?)?(\(?\d{3}\)?|\d{3})( |-|\.)?(\d{3}( |-|\.)?\d{4})"
+          title="Номер телефона должен состоять из 11-12 цифр и может содержать цифры, пробелы, тире, пузатые скобки и может начинаться с +"
+          value={number}
+          inputId={this.numberInputId}
+          handleChange={this.handleChange}
+        />
+
         <Button name="Add Contact" />
       </form>
     );

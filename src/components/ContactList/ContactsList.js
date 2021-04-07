@@ -7,7 +7,11 @@ const ContactList = ({ contacts }) => {
   return (
     <ul>
       {contacts.map(contact => (
-        <ContactListItem key={contact.id} contactName={contact.name} />
+        <ContactListItem
+          key={contact.id}
+          contactName={contact.name}
+          contactNumber={contact.number}
+        />
       ))}
     </ul>
   );
