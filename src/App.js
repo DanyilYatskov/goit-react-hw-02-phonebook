@@ -6,6 +6,9 @@ import '@pnotify/core/dist/PNotify.css';
 import '@pnotify/core/dist/BrightTheme.css';
 import '@pnotify/confirm/dist/PNotifyConfirm.css';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import Form from './components/Form';
 import Section from './components/Section/';
 import ContactsList from './components/ContactList/';
@@ -51,6 +54,17 @@ class App extends Component {
         title: 'Oops',
         text: `${newContact.name} is already in contacts`,
       });
+      const notify = () =>
+        toast.error(`${newContact.name} is already in contacts`, {
+          position: 'top-center',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      notify();
       return;
     }
     this.setState(({ contacts }) => ({
@@ -81,6 +95,7 @@ class App extends Component {
         ) : (
           <Notification message="Contacts are missing" />
         )}
+        <ToastContainer />
       </div>
     );
   }

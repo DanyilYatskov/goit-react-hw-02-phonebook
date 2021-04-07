@@ -33,7 +33,7 @@ class Form extends Component {
   render() {
     const { name, number } = this.state;
     return (
-      <form className="TodoEditor" onSubmit={this.handleSubmit}>
+      <form className={styles.form} onSubmit={this.handleSubmit}>
         <Input
           inputName="Name"
           type="text"
