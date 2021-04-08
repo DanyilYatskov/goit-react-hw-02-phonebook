@@ -16,8 +16,10 @@ class Form extends Component {
     name: this.props.name,
     number: this.props.number,
   };
+
   nameInputId = uuidv4();
   numberInputId = uuidv4();
+
   handleChange = event => {
     const { name, value } = event.target;
     this.setState({ [name.toLowerCase()]: value });
@@ -25,11 +27,10 @@ class Form extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-
     this.props.onSubmit(this.state);
-
     this.setState({ name: '', number: '' });
   };
+
   render() {
     const { name, number } = this.state;
     return (

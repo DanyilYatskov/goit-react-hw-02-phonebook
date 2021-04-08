@@ -24,13 +24,16 @@ class App extends Component {
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
   };
+
   state = {
     contacts: this.props.contacts,
     filter: '',
   };
+
   onChangeFilter = event => {
     this.setState({ filter: event.target.value });
   };
+
   getFilteredContacts = () => {
     const { filter, contacts } = this.state;
     const normalizedFilter = filter.toLowerCase();
@@ -39,6 +42,7 @@ class App extends Component {
       contact.name.toLowerCase().includes(normalizedFilter),
     );
   };
+
   addContact = ({ name, number }) => {
     const newContact = {
       id: uuidv4(),
@@ -71,11 +75,13 @@ class App extends Component {
       contacts: [...contacts, newContact],
     }));
   };
+
   deleteContact = contactId => {
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(contact => contact.id !== contactId),
     }));
   };
+
   render() {
     const { contacts, filter } = this.state;
     const filteredContacts = this.getFilteredContacts();
